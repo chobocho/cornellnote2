@@ -108,8 +108,9 @@ class SimpleGuiPanel(wx.Panel):
             )
 
         if dlg.ShowModal() == wx.ID_OK:
+            print("ShwoModal")
             filename = dlg.GetPath()
-            dlg.Destroy()
+        dlg.Destroy()
 
         if len(filename) > 0:
             fm = FileManager()
