@@ -8,6 +8,10 @@ class SimpleGuiMenu():
     def _addMenubar(self):
         menubar = wx.MenuBar()
         fileMenu = wx.Menu()
+        loadItemId = wx.NewId()
+        loadItem = fileMenu.Append(loadItemId, 'Load', 'Load')
+        self.parent.Bind(wx.EVT_MENU, self.parent.OnLoad, loadItem)
+
         saveItemId = wx.NewId()
         saveItem = fileMenu.Append(saveItemId, 'Save', 'Save')
         self.parent.Bind(wx.EVT_MENU, self.parent.OnSave, saveItem)
@@ -17,6 +21,10 @@ class SimpleGuiMenu():
         menubar.Append(fileMenu, '&File')
 
         noteMenu = wx.Menu()
+        copy2ClipboardItemId = wx.NewId()
+        copy2ClipboardItem = noteMenu.Append(copy2ClipboardItemId, 'Copy to clipboard', 'Copy to clipboard')
+        self.parent.Bind(wx.EVT_MENU, self.parent.OnCopyToClipboard, copy2ClipboardItem)
+
         clearItemId = wx.NewId()
         clearItem = noteMenu.Append(clearItemId, 'Clear', 'Clear')
         self.parent.Bind(wx.EVT_MENU, self.parent.OnClear, clearItem)

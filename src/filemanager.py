@@ -11,7 +11,7 @@ class FileManager:
     def onLoadJson(self):
        print ("onLoadJson")
        try:
-           with open(self.fileName) as f:
+           with open(self.fileName, encoding="UTF-8") as f:
                jsonData = json.load(f)
            print(jsonData['version'])
            self.memo = jsonData['memo'][:]
@@ -29,7 +29,7 @@ class FileManager:
 
         self.fileName = filename_
 
-        if self.onLoadJson() == True:
+        if self.onLoadJson():
             return self.memo
         return []
 
