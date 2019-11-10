@@ -13,10 +13,15 @@ class FileManager:
        try:
            with open(self.fileName, encoding="UTF-8") as f:
                jsonData = json.load(f)
-           print(jsonData['version'])
-           self.memo = jsonData['memo'][:]
-           #print(self.memo)
+           if 'version' in jsonData.keys():
+               print(jsonData['version'])
+               self.memo = jsonData['memo'][:]
+           elif 'title' in jsonData.keys():
+               self.memo = []
+               for key in jsonData.values():
+                   self.memo.append(key)
        except:
+           traceback.print_exc()
            print ("onLoadJson: Fail")
            return False
 
@@ -29,9 +34,9 @@ class FileManager:
 
         self.fileName = filename_
 
-        if self.onLoadJson():
+        if self.onLoadJson() == True:
             return self.memo
-        return []
+        return ["Fail to load " + filename_]*4
 
     def OnSaveAsJson(self, memoData):
         print("OnSaveAsJson")
