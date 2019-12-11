@@ -59,7 +59,9 @@ class SimpleGuiPanel(wx.Panel):
         self.UiList = [self.title, self.keyword, self.memo, self.summary]
 
     def OnCallback(self, filelist):
-        if (".json" in filelist[0].lower()) == False:
+        isJson = (".json" in filelist[0].lower())
+        isNote = (".note" in filelist[0].lower())
+        if (isJson == False) and (isNote == False):
             return
 
         memo = self.OnLoad(filelist[0])
@@ -124,9 +126,11 @@ class SimpleGuiPanel(wx.Panel):
         fm = FileManager()
         filename = self.filename.GetValue()
         if len(filename) == 0:
-            filename = "untitle" + str(random.randrange(100,1000)) + ".json"
-        if (".json" in filename.lower()) == False:
-            filename += ".json"
+            filename = "untitle" + str(random.randrange(100,1000)) + ".note"
+        isJson = (".json" in filename.lower())
+        isNote = (".note" in filename.lower())
+        if (isJson == False) and (isNote == False):
+            filename += ".note"
         memo = []
         
         for text in self.UiList:
