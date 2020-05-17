@@ -1,12 +1,13 @@
 import wx
 from simpleguipanel import *
 from simpleguimenu import * 
+from info import *
 
 class SimpleGuiFrame(wx.Frame):
-    def __init__(self, *args, version, **kw):
-        super(SimpleGuiFrame, self).__init__(*args, title=version, **kw)
+    def __init__(self, *args, **kw):
+        super(SimpleGuiFrame, self).__init__(*args, title=SW_VERSION, **kw)
         self.panel = SimpleGuiPanel(self)
-        self.version = version
+        self.version = SW_VERSION
         sizer = wx.BoxSizer(wx.VERTICAL)
         sizer.Add(self.panel, 1, wx.EXPAND)
         self.SetSizer(sizer)
