@@ -16,6 +16,8 @@ class SimpleGuiPanel(wx.Panel):
 
 
     def _initUi(self):
+        font = wx.Font(14, wx.FONTFAMILY_TELETYPE, wx.NORMAL, wx.NORMAL)
+    
         sizer = wx.BoxSizer(wx.VERTICAL)
         
         ##
@@ -27,6 +29,7 @@ class SimpleGuiPanel(wx.Panel):
         self.filename = wx.TextCtrl(self, style = wx.TE_PROCESS_ENTER, size=(WINDOW_SIZE-70,30))
         self.filename.SetValue("")
         self.filename.SetBackgroundColour(wx.Colour(255, 255, 204))
+        self.filename.SetFont(font)
         filenameBox.Add(self.filename, 1, wx.EXPAND, 1)
         sizer.Add(filenameBox, 0, wx.EXPAND, 1)
 
@@ -35,6 +38,7 @@ class SimpleGuiPanel(wx.Panel):
         self.title = wx.TextCtrl(self, style = wx.TE_PROCESS_ENTER|wx.TE_MULTILINE, size=(WINDOW_SIZE,100))
         self.title.SetValue("")
         self.title.SetBackgroundColour(wx.Colour(255, 255, 204))
+        self.title.SetFont(font)
         titleBox.Add(self.title, 1, wx.EXPAND, 1)
         sizer.Add(titleBox, 0, wx.EXPAND, 1)
         ##
@@ -42,17 +46,20 @@ class SimpleGuiPanel(wx.Panel):
         self.keyword = wx.TextCtrl(self, style = wx.TE_PROCESS_ENTER|wx.TE_MULTILINE, size=(200,WINDOW_H_SIZE))
         self.keyword.SetValue("")
         self.keyword.SetBackgroundColour(wx.Colour(255, 255, 204))
+        self.keyword.SetFont(font)
         memoBox.Add(self.keyword, 0, wx.EXPAND, 1)
 
         self.memo = wx.TextCtrl(self, style = wx.TE_PROCESS_ENTER|wx.TE_MULTILINE, size=(WINDOW_SIZE-200,WINDOW_H_SIZE))
         self.memo.SetValue("")
         self.memo.SetBackgroundColour(wx.Colour(255, 255, 204))
+        self.memo.SetFont(font)
         memoBox.Add(self.memo, 1, wx.EXPAND, 1)
         sizer.Add(memoBox, 1, wx.EXPAND, 1)
         ##
         self.summary = wx.TextCtrl(self, style = wx.TE_PROCESS_ENTER|wx.TE_MULTILINE, size=(WINDOW_SIZE,100))
         self.summary.SetValue("")
         self.summary.SetBackgroundColour(wx.Colour(255, 255, 204))
+        self.summary.SetFont(font)
         sizer.Add(self.summary, 0, wx.EXPAND, 1)
         self.SetSizer(sizer)
 
