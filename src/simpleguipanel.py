@@ -109,7 +109,7 @@ class SimpleGuiPanel(wx.Panel):
             self, message="Choose a file",
             defaultDir=os.getcwd(),
             defaultFile="",
-            wildcard="*.json",
+            wildcard="Note files (*.note)|*.note",
             style=wx.FD_OPEN | 
                   #wx.FD_MULTIPLE |
                   wx.FD_CHANGE_DIR | wx.FD_FILE_MUST_EXIST |
